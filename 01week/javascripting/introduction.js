@@ -2,8 +2,7 @@
 
 /* return date program */
 function returnDate(){
-  const date = new Date();
-  return date;
+  return new Date();
 }
 console.log(returnDate());
 
@@ -33,8 +32,7 @@ console.log(returnType(15));
 function addingNumbers(){
   const num1 = 5;
   const num2 = 3;
-  const num3 = num1 + num2;
-  return num3;
+  return num1 + num2;
 }
 console.log(addingNumbers());
 
@@ -43,7 +41,7 @@ console.log(addingNumbers());
 function twoTrue(){
   const chicken = true;
   const celery = true;
-  if (chicken === true && celery === true) {
+  if (chicken && celery === true) {
     console.log('both are true');
   }
 }
@@ -52,10 +50,10 @@ console.log(twoTrue());
 
 // 1 thing is true program
 function oneTrue(){
-  const numOne = 2;
-  const numTwo = 4;
-  if (numOne < numTwo) {
-    console.log('the first is smaller');
+  const numOne = true;
+  const numTwo = false;
+  if (numOne || numTwo === true) {
+    console.log('something is right');
   }
 }
 console.log(oneTrue());
@@ -63,11 +61,9 @@ console.log(oneTrue());
 
 // both things are false program
 function bothFalse(){
-  const bird = true;
-  const dog = true;
-  if (bird === false && dog === false) {
-    console.log('both are true');
-  }else {
+  const bird = 0;
+  const dog = 0;
+  if (!bird && !dog) {
     console.log('both are false');
   }
 }
