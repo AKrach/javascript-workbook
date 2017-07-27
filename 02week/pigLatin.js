@@ -9,10 +9,22 @@ const rl = readline.createInterface({
 
 
 function pigLatin(word) {
-
-  // Your code here
+  const vowels = ['a', 'e', 'i', 'o', 'u']
+  let arg = word.trim().toLowerCase().split('');
+  for (let i = 0; i < arg.length; i++) {
+// if word starts with a vowel
+    if (vowels.indexOf(word[i]) !== -1 && word[i] === word[0]) {
+      return arg.concat('yay').join('');
+// if word starts with a consonant
+    } else if (vowels.indexOf(word[i]) >= 0 ) {
+      const firstLetters = arg.slice(0, i);
+      const middleLetters = arg.slice(i, arg.length);
+      return middleLetters.concat(firstLetters, 'ay').join('');
+    }
+  }
 
 }
+
 
 
 function getPrompt() {
