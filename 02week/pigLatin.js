@@ -10,24 +10,21 @@ const rl = readline.createInterface({
 
 function pigLatin(word) {
   const vowels = ['a', 'e', 'i', 'o', 'u']
-
-  const pigLatin = function(arg) {
-    word = arg.trim().toLowerCase().split('');
-    for (let i = 0; i < word.length; i++) {
+  let arg = word.trim().toLowerCase().split('');
+  for (let i = 0; i < arg.length; i++) {
 // if word starts with a vowel
-      if (vowels.indexOf(word[i]) !== -1 && word[i] === word[0] ) {
-        return word.concat('yay').join('');
-// if word starts wiht a consonant
-      } else if (vowels.indexOf(word[i]) >= 0 ) {
-        const firstLetters = word.slice(0, i);
-        const middleLetters = word.slice(i, word.length);
-        return middleLetters.concat(firstLetters, 'ay').join('');
-      }
+    if (vowels.indexOf(word[i]) !== -1 && word[i] === word[0]) {
+      return arg.concat('yay').join('');
+// if word starts with a consonant
+    } else if (vowels.indexOf(word[i]) >= 0 ) {
+      const firstLetters = arg.slice(0, i);
+      const middleLetters = arg.slice(i, arg.length);
+      return middleLetters.concat(firstLetters, 'ay').join('');
     }
   }
-  // Your code here
 
 }
+
 
 
 function getPrompt() {
