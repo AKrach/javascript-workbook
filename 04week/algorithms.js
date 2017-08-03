@@ -16,10 +16,27 @@ for (let i = 0; i < 1000; i++) {
 
 function bubbleSort(arr) {
   // Your code here
+  const ret = Array.from(arr)
+  let swapped
+  do {
+    swapped = false
+    for (let i = 1; i < ret.length; i++) {
+      if (ret[i - 1] > ret[i]) {
+        [ret[i], ret[i - 1]] = [ret[i] - 1, ret[i]]
+        swapped = true
+      }
+    }
+  } while (swapped);
+  return ret;
 }
 
 function mergeSort(arr) {
   // Your code here
+  /* if list is 0 or 1 its already sorted
+  divide unsorted list into two sublists half of the size
+  sort each sublist recursively by reapplying the mergeSortmerge the two sublists into one sorted list
+  */
+  
 }
 
 function binarySearch(arr, item) {
