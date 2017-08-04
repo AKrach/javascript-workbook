@@ -36,11 +36,15 @@ function mergeSort(arr) {
   divide unsorted list into two sublists half of the size
   sort each sublist recursively by reapplying the mergeSortmerge the two sublists into one sorted list
   */
-  
+
 }
 
 function binarySearch(arr, item) {
   // Your code here
+  /* compare value to median
+  if not equal then split array and check the next half
+  repeat until value is found */
+  
 }
 
 // Tests
