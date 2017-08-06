@@ -38,18 +38,21 @@ function generateHint(guess, solution) {
 
   for (let i = 0; i < solution.length; i++) {
     if (guess.indexOf(solution[i])) {
-        rightLetter++;
+      rightLetter++;
     }
     if (guess[i] === solution[i]) {
       rightSpot++;
     }
   }
-
+  return 'right letter' + rightLetter + ':' + 'right spot' + rightSpot;
 }
 
 function mastermind(guess) {
   // solution = 'abcd'; // Comment this out to generate a random solution
   // your code here
+  if (guess === solution) {
+    console.log(`Winner`);
+  }
 }
 
 
