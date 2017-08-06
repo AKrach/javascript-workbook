@@ -19,24 +19,40 @@ function printStacks() {
   console.log("c: " + stacks.c);
 }
 
-function movePiece() {
+function movePiece(startStack, endStack) {
   // Your code here
-
+  // take disc off starting peg
+  // put disc on end peg
+  const poppedDisc = stacks[startStack].pop();
+  stacks[endStack].push(poppedDisc);
 }
 
-function isLegal() {
+function isLegal(startStack, endStack) {
   // Your code here
-
+  // check if disc value is greater than disc on end peg
+  if (endStack.length === 0) {
+    return true;
+  } else if (stacks[startStack][stacks[startStack].length - 1] > stacks[endStack][stacks[endStack].length - 1]) {
+    console.log('Cannot do that');
+    return false;
+  }
 }
 
-function checkForWin() {
+function checkForWin(endStack) {
   // Your code here
-
+  // check if all discs are on last peg
+  if (stacks['c'].length === 4) {
+    console.log('Winner');
+  }
 }
 
 function towersOfHanoi(startStack, endStack) {
   // Your code here
-
+  // runs all other functions
+  if (isLegal(startStack, endStack)) {
+    movePiece(startStack, endStack);
+    checkForWin(endStack);
+  }
 }
 
 function getPrompt() {
