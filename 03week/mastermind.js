@@ -28,12 +28,27 @@ function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 }
 
-function generateHint() {
+function generateHint(guess, solution) {
   // your code here
+  /* there are two kinds of hints
+  correct letters and correct letters in the right position
+  split the guess and solution into arrays and compare them*/
+  let rightLetter = 0;
+  let rightSpot = 0;
+
+  for (let i = 0; i < solution.length; i++) {
+    if (guess.indexOf(solution[i])) {
+        rightLetter++;
+    }
+    if (guess[i] === solution[i]) {
+      rightSpot++;
+    }
+  }
+
 }
 
 function mastermind(guess) {
-  solution = 'abcd'; // Comment this out to generate a random solution
+  // solution = 'abcd'; // Comment this out to generate a random solution
   // your code here
 }
 
