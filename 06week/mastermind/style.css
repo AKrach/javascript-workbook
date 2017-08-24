@@ -1,0 +1,16 @@
+h1 {
+  text-align: center;
+}
+form {
+  border: 1px solid black;
+  text-align: center;
+  margin-left: 30%;
+  margin-right: 30%;
+}
+#theGuess{
+  border: 1px solid black;
+}
+#submit{
+  border: 1px solid black;
+  margin-top: 10px;
+}
