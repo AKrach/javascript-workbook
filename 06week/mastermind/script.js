@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let solution = '';
   let letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
 
-  // generateSolution();
+  generateSolution();
   document.getElementById("submit").addEventListener("click", () =>{
     const guessing = document.getElementById("theGuess")
     const myGuess = guessing.value;
