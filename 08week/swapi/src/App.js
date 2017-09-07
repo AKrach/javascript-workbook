@@ -6,35 +6,48 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      data: null
+      data: []
     }
   }
 
   componentDidMount(){
     fetch('https://swapi.co/api/species/?page=1')
+    .then((response) => {
+      if (!response.ok) {
+        throw Error("Network request failed"); // Throw error
+      }
+      return response
+    })
     .then((response) => response.json())
     .then((responseJson) => {
-      this.setState({data: responseJson.results})
-      return responseJson;
+      console.log(responseJson, ' responseJson');
+      return this.setState({data: responseJson.results})
     })
     .catch((error) => {
       console.error(error);
     });
+
   }
 
 
   render() {
-    console.log(this.state.data);
+    // console.log(this.state.data[0]);
+    const people = this.state.data.map(person => {
+      return <div style={{
+          color: 'black',
+          marginTop: 10,
+      }}>{person.name}<br></br>{person.average_lifespan} years</div>
+    })
     return (
       <div className="App">
         <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Starwars Species</h2>
-          <h3>{this.state.data}</h3>
+          <img src={logo} className="App-logo" alt='logo' />
+          <h1>Starwars Species</h1>
+          <h2>{people}</h2>
         </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <div>
+
+        </div>
       </div>
     );
   }
