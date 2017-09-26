@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import NewsCard from './NewsCard';
 
 
 /* parent Component
     fetches Api
-
+more commments
 child Component: article card
     display all top stories cards
     each story will have a title, url, upvotes, posted time, and number of comments.
@@ -39,7 +38,7 @@ class App extends Component {
   renderStories(){
     if(this.state.stories){
       return this.state.stories.map((story, index) =>{
-        return <NewsCard key={index} title={story.title} by={story.by} />
+        return <NewsCard url={story.url} key={index} title={story.title} by={story.by} />
       });
     }
   }
