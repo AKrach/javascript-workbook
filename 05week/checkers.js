@@ -90,13 +90,8 @@ function Board() {
      this.grid[blackRow][blackCol] = blackChecker;
     }
   };
-  // Your code here
-  this.selectChecker(row, column) {
-    return this.grid;
-  }
-  this.killChecker(position){
-    this.checker.splice(this.checker.indexOf(), 1, null);
-  }
+
+
 
 
 }
@@ -107,12 +102,23 @@ function Game() {
 
   this.start = function() {
     this.board.createGrid();
-    // Your code here
     this.board.createCheckers();
-    this.moveChecker(start, end) {
-      
-    }
   };
+  this.moveChecker = (start, end)=> {
+    const pieceRow = parseInt(start.charAt(0));
+    const pieceCol = parseInt(start.charAt(1));
+    const moveRow = parseInt(end.charAt(0));
+    const moveCol = parseInt(end.charAt(1));
+    this.board.grid[moveRow][moveCol] = this.board.grid[pieceRow][pieceCol];
+    this.board.grid[pieceRow][pieceCol] = null;
+    if(Math.abs(moveRow - pieceRow) === 2) {
+      let killRow = moveRow - pieceRow > 0 ? pieceRow + 1 : moveRow + 1
+      let killCol = moveCol - pieceCol > 0 ? pieceCol + 1 : moveCol + 1
+
+      this.board.grid[killRow][killCol] = null;
+      this.board.checkers.pop();
+    }
+  }
 }
 
 function getPrompt() {
