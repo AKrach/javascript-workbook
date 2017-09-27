@@ -28,37 +28,48 @@ function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 }
 
-function generateHint(guess, solution) {
-  // your code here
-  /* there are two kinds of hints
-  correct letters and correct letters in the right position
-  split the guess and solution into arrays and compare them*/
-  let rightLetter = 0;
-  let rightSpot = 0;
+function generateHint(myGuess) {
 
-  for (let i = 0; i < solution.length; i++) {
-    if (guess.indexOf(solution[i])) {
-      rightLetter++;
-    }
-    if (guess[i] === solution[i]) {
-      rightSpot++;
-    }
-  }
-  return 'right letter' + rightLetter + ':' + 'right spot' + rightSpot;
+    let exactMatch = 0;
+    let correctLetter = 0;
+    let matchIndex = -1;
+    // creating arrays out of the strings.
+    let solutionArr = solution.split('');
+    let myGuessArr = myGuess.split('');
+
+    // This piece of code tests for exact match
+    myGuessArr.forEach((letter, index) => {
+      if (letter === solutionArr[index]) {
+        exactMatch++;
+        // clear out value.  This sets us up to look for correct letter test later.  These won't be considered.
+        solutionArr[index] = '';
+        myGuessArr[index] = '';
+      }
+    });
+    myGuessArr.forEach((letter) => {
+      if (letter) {  // letter could be null from previous forEach statement.
+        matchIndex = solutionArr.indexOf(letter);  // Let's find a matching letter in the solution!
+        if (matchIndex !== -1) {  // We found a letter match in the string.
+          correctLetter++
+          solutionArr[matchIndex] = '';  // clear out value so value won't be considered with next letter tests.
+        }
+      }  // closing brace for if (letter)
+    });
+    return`${exactMatch}-${correctLetter}`;
 }
-
 function mastermind(guess) {
-  // solution = 'abcd'; // Comment this out to generate a random solution
-  // your code here
+  board[board.length] = `${guess} : ${generateHint(guess)}`;
   if (guess === solution) {
-    console.log(`Winner`);
+    return`Winner`;
+    
+
   }
 }
 
 
 function getPrompt() {
   rl.question('guess: ', (guess) => {
-    mastermind(guess);
+    mastermind(guess)
     printBoard();
     getPrompt();
   });
